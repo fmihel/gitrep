@@ -24,6 +24,9 @@ spl_autoload_register(function ($class) {
                 }
                 $module = implode('/', [__DIR__, $path, $local_class_path . '.php']);
                 $module = str_replace(['//', '\\/'], ['/', '\\\\'], $module);
+                if (strpos($module, ':\\\\') === false) {
+                    $module = str_replace('\\\\', '/', $module);
+                }
 
             }
 
